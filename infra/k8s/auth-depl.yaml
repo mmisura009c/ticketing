@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: mmisura/auth
+          image: gcr.io/ticketing-dev-401114/auth
 ---
 apiVersion: v1
 kind: Service
