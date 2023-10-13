@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
-const signupComponent = () => {
+const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { doRequest, errors } = useRequest({
@@ -46,4 +46,4 @@ const signupComponent = () => {
     );
 };
 
-export default signupComponent;
+export default SignUp;
