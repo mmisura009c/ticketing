@@ -4,3 +4,6 @@ auth/node_modules
 
 client/node_modules
 client/.next
+
+common/node_modules
+common/build
