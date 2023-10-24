@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@lafmmticketing/common": "^1.0.5",
     "@types/node": "^20.8.7",
     "node-nats-streaming": "^0.3.2",
     "ts-node-dev": "^2.0.0",

@@ -15,19 +15,10 @@ stan.on('connect', async () => {
         await publisher.publish({
             id: '123',
             title: 'Concert',
-            price: 20
+            price: 20,
+            userId: '456'
         });
     } catch (err) {
         console.error(err);
     }
-
-    /*const data = JSON.stringify({
-        id: '123',
-        title: 'Concert',
-        price: 20
-    });
-
-    stan.publish('ticket:created', data, () => {
-        console.log('Event published');
-    });*/
 });

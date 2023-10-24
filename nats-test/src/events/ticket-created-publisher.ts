@@ -1,6 +1,4 @@
-import { Publisher } from '../../../common/src';
-import { TicketCreatedEvent } from '../../../common/src';
-import { Subjects } from '../../../common/src';
+import { Publisher, Subjects, TicketCreatedEvent } from '@lafmmticketing/common';
 
 export class TicketCreatedPublisher extends Publisher<TicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;

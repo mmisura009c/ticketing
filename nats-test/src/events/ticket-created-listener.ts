@@ -1,7 +1,5 @@
 import { Message } from 'node-nats-streaming';
-import { Listener } from '../../../common/src';
-import { TicketCreatedEvent } from '../../../common/src';
-import { Subjects } from '../../../common/src';
+import { Listener, Subjects, TicketCreatedEvent } from '@lafmmticketing/common';
 
 export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
     subject: Subjects.TicketCreated = Subjects.TicketCreated;
