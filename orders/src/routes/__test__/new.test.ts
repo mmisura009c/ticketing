@@ -58,3 +58,5 @@ it('reserves a ticket', async () => {
     orders = await Order.find({});
     expect(orders.length).toEqual(1);
 });
+
+it.todo('emits an order created event')
