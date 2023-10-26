@@ -3,10 +3,20 @@ import request from 'supertest';
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
 
+it('returns an error if user is not signed in', async () => {
+    const fakeOrderId = new mongoose.Types.ObjectId().toHexString();
+
+    // Make missing order request to fetch the order
+    await request(app)
+        .get(`/api/orders/${fakeOrderId}`)
+        .send()
+        .expect(401);
+});
+
 it('returns an error if invalid order id is sent', async () => {
     const fakeOrderId = 'fake id';
 
-    // Make request to fetch the order
+    // Make invalid order id request to fetch the order
     await request(app)
         .get(`/api/orders/${fakeOrderId}`)
         .set('Cookie', global.signin())
@@ -15,11 +25,11 @@ it('returns an error if invalid order id is sent', async () => {
 });
 
 it('returns an error if no order exists', async () => {
-    const fakeOrderId = new mongoose.Types.ObjectId().toHexString();
+    const missingOrderId = new mongoose.Types.ObjectId().toHexString();
 
-    // Make request to fetch the order
+    // Make missing order request to fetch the order
     await request(app)
-        .get(`/api/orders/${fakeOrderId}`)
+        .get(`/api/orders/${missingOrderId}`)
         .set('Cookie', global.signin())
         .send()
         .expect(404);

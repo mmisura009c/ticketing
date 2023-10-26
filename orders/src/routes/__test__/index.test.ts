@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { Order } from '../../models/order';
 import { Ticket } from '../../models/ticket';
+import mongoose from 'mongoose';
 
 const buildTicket = async () => {
     const ticket = Ticket.build({
@@ -12,6 +12,13 @@ const buildTicket = async () => {
 
     return ticket;
 };
+
+it('returns an error if user is not signed in', async () => {
+    // Make a request without signing in
+    await request(app)
+        .get('/api/orders')
+        .expect(401);
+});
 
 it('fetches order for a particular user', async () => {
     // Create three tickets

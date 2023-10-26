@@ -5,6 +5,29 @@ import { Order } from '../../models/order';
 import { Ticket } from '../../models/ticket';
 import { OrderStatus } from '@lafmmticketing/common';
 
+it('returns an error if user is not signed in', async () => {
+    // Make unauthorised request to create the order
+    const ticketId = new mongoose.Types.ObjectId();
+
+    await request(app)
+        .post('/api/orders')
+        .send({ ticketId })
+        .expect(401);
+});
+
+it('returns an error if invalid ticket id is sent', async () => {
+    const fakeTicketId = 'fake id';
+
+    // Make request to create the order
+    await request(app)
+        .post('/api/orders')
+        .set('Cookie', global.signin())
+        .send({
+            ticketId: fakeTicketId
+        })
+        .expect(400);
+});
+
 it('returns an error if the ticket does not exist', async () => {
     const ticketId = new mongoose.Types.ObjectId();
 
