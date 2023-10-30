@@ -34,7 +34,7 @@ const setup = async () => {
 };
 
 it('sets the orderId of the ticket to undefined', async () => {
-    const { msg, data, ticket, orderId, listener } = await setup();
+    const { msg, data, ticket, listener } = await setup();
 
     await listener.onMessage(data, msg);
 
@@ -44,7 +44,7 @@ it('sets the orderId of the ticket to undefined', async () => {
 });
 
 it('acks the message', async () => {
-    const { msg, data, orderId, listener } = await setup();
+    const { msg, data, listener } = await setup();
 
     await listener.onMessage(data, msg);
 
@@ -52,7 +52,7 @@ it('acks the message', async () => {
 });
 
 it('publishes a ticket updated event', async () => {
-    const { msg, data, ticket, orderId, listener } = await setup();
+    const { msg, data, listener } = await setup();
 
     await listener.onMessage(data, msg);
 
@@ -60,6 +60,6 @@ it('publishes a ticket updated event', async () => {
 
     const ticketUpdatedData = JSON.parse((natsWrapper.client.publish as jest.Mock).mock.calls[0][1]);
 
-    expect(ticket.id).toEqual(ticketUpdatedData.id);
+    expect(data.ticket.id).toEqual(ticketUpdatedData.id);
     expect(ticketUpdatedData.orderId).not.toBeDefined();
 });
