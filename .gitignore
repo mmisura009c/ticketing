@@ -8,6 +8,8 @@ client/.next
 common/node_modules
 common/build
 
+expiration/node_modules
+
 nats-test/node_modules
 
 orders/node_modules
