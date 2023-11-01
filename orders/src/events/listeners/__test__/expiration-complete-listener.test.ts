@@ -59,7 +59,20 @@ it('emit an OrderCancelled event', async () => {
     expect(eventData.id).toEqual(order.id);
 });
 
-it('ack the message', async () => {
+it('ack the message when order is already paid for / complete', async () => {
+    const { listener, order, data, msg } = await setup();
+
+    order.set({
+        status: OrderStatus.Complete
+    });
+    await order.save();
+
+    await listener.onMessage(data, msg);
+
+    expect(msg.ack).toHaveBeenCalled();
+});
+
+it('ack the message after order was cancelled', async () => {
     const { listener, data, msg } = await setup();
 
     await listener.onMessage(data, msg);
