@@ -11,3 +11,5 @@ Technologies used: Javascript, Typescript, MongoDB, Node.js, React, JSX, Next.js
 ## Getting Started
 
 In order to run, position yourself in the root directory and run the following command: ```skaffold dev```
+
+To run skaffold dev on GCP, set the "gcr.io/ticketing-dev-401114" instead of "mmisura" 
