@@ -8,6 +8,7 @@ import { PaymentCreatedListener } from './events/listeners/payment-created-liste
 import nats from 'node-nats-streaming';
 
 const start = async () => {
+    console.log('Starting up ...');
     if (!process.env.JWT_KEY) {
         throw new Error('JWT_KEY must be defined');
     }
